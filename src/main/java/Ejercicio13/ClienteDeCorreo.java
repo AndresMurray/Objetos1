@@ -22,6 +22,23 @@ public class ClienteDeCorreo {
 		return this.inbox;
 	}
 	
+	public Email buscar(String texto) {
+		return this.carpetas.stream()
+				.map(carpeta -> carpeta.buscar(texto)) 
+				.filter(email -> email != null)
+				.findFirst().orElse(null);
+
+	}
+	
+	//.map devuelve otro stream donde las carpetas tienen el primer
+	// mail que encontraron que contenia o sino tienen null
+	
+	
+	public int espacioOcupado () {
+		return this.carpetas.stream()
+		.mapToInt(carpeta -> carpeta.espacioOcupado())
+		.sum();
+	}
 	
 	
 	

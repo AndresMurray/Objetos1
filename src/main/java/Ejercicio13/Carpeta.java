@@ -29,7 +29,22 @@ public class Carpeta {
 		this.emails.remove(email);
 	}
 	
+	public Email buscar (String texto) {
+		
+		return this.emails
+				.stream()
+				.filter(email -> email.contiene(texto))
+				.findFirst().orElse(null);
+	}
 	
+	
+	public int espacioOcupado () {
+		
+		return this.emails.stream()
+				.mapToInt(email -> email.espacioOcupado())
+				.sum();
+		
+	}
 	
 
 }
